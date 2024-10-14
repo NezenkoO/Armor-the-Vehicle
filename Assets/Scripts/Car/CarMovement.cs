@@ -19,7 +19,7 @@ public class CarMovement : MonoBehaviour
         initialPosition = transform.position;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         elapsedTime += Time.fixedDeltaTime;
 
