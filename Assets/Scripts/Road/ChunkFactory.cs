@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "ChunkFactory", menuName = "Factories/ChunkFactory")]
 public class ChunkFactory : GameObjectFactory, IChunkReclaimer
 {
     [SerializeField] private InitialChunk _initialChunk;

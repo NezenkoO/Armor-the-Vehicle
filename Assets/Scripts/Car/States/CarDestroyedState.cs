@@ -23,6 +23,7 @@ public class CarDestroyedState : State
 
     private void OnDisable()
     {
+        _fireParticleSystem.Clear();
         _fireParticleSystem.Stop();
     }
 }
