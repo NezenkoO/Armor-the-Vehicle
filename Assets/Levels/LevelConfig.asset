@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b8cca0b80d78843ba6c23ba596910a, type: 3}
   m_Name: LevelConfig
   m_EditorClassIdentifier: 
-  LevelLength: 1
+  LevelLength: 5
   EnemiesPerChunk:
     _min: 17
     _max: 26

@@ -35,6 +35,7 @@ public class SetupView : MonoBehaviour
 
     public void Hide()
     {
+        if(_canvasGroup == null) return;
         _canvasGroup.Hide();
     }
 }
