@@ -4,12 +4,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _target;
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private Vector3 _rotationOffset;
+    [SerializeField] private Vector3 _offset, _rotationOffset;
     [SerializeField] private float _transitionDuration = 2f;
 
-    private Coroutine _offsetChangeCoroutine;
-    private Coroutine _rotationChangeCoroutine;
+    private Coroutine _offsetChangeCoroutine, _rotationChangeCoroutine;
 
     private void OnValidate()
     {

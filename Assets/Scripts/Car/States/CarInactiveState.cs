@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CarInactiveState : State
 {
-    [SerializeField] private CarHud _hud;
+    [SerializeField] private HealthBar _hud;
     [SerializeField] private CarMovement _carMovement;
     [SerializeField] private TurretBulletLauncher _turretBulletLauncher;
     [SerializeField] private TurretMovement _turretMovement;

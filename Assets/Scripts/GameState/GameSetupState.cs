@@ -13,7 +13,7 @@ public class GameSetupState : State
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private Car _car;
     [SerializeField] private Turret _turret;
-    [SerializeField] private Button _goButton;
+    [SerializeField] private SetupView _setupView;
 
     private void OnEnable()
     {
@@ -26,14 +26,14 @@ public class GameSetupState : State
         _car.Initialize();
         _turret.ResetRotation();
         _car.transform.position = initialChunk.CarPositionPoint.position;
-        _goButton.gameObject.SetActive(true);
-        _goButton.onClick.AddListener(OnGoButtonClick);
+        _setupView.Show();
+        _setupView.GoButtonClicked += OnGoButtonClick;
     }
 
     private void OnDisable()
     {
-        _goButton.onClick.RemoveListener(OnGoButtonClick);
-        _goButton.gameObject.SetActive(false);
+        _setupView.GoButtonClicked -= OnGoButtonClick;
+        _setupView.Hide();
     }
 
 

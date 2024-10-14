@@ -14,12 +14,13 @@ public class Car : GameBehaviorStateSwitcher
 
     [SerializeField] private float _startHealth;
     [SerializeField] private CarView _carAnimation;
-    [SerializeField] private CarHud _hud;
+    [SerializeField] private HealthBar _hud;
 
     public void Initialize()
     {
         Health = _startHealth;
         _hud.Initialize(_startHealth);
+        _hud.Hide();
     }
 
     public void DealDamage(float value)
@@ -31,6 +32,7 @@ public class Car : GameBehaviorStateSwitcher
             CarDestroyed?.Invoke();
             return;
         }
+        _hud.Show();
         _hud.ChangeHealth(Health);
         _carAnimation.PlayHitAnimation();
     }

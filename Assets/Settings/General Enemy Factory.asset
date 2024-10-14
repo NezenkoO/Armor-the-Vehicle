@@ -16,8 +16,8 @@ MonoBehaviour:
     Prefab: {fileID: 5471895939846950823, guid: 83e7f45ebe93dc94abcdc8fc798b3ecc,
       type: 3}
     Scale:
-      _min: 0.43622512
-      _max: 0.5226022
+      _min: 0.32724512
+      _max: 0.41362223
     Speed:
       _min: 8.512184
       _max: 13.289207

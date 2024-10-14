@@ -11,21 +11,21 @@ public class GameLevelEndState : State
     [SerializeField] private CameraStateSwitcher _cameraStateSwitcher;
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private Car _car;
-    [SerializeField] private Button _restartButton;
+    [SerializeField] private WinView _winView;
 
     private void OnEnable()
     {
         _enemySpawner.Clear();
         _cameraStateSwitcher.SwitchState<CameraOrbitViewState>();
         _car.SwitchState<CarInactiveState>();
-        _restartButton.gameObject.SetActive(true);
-        _restartButton.onClick.AddListener(OnRestartButtonClick);
+        _winView.Show();
+        _winView.OnRestartButtonClicked += OnRestartButtonClick;
     }
 
     private void OnDisable()
     {
-        _restartButton.onClick.RemoveListener(OnRestartButtonClick);
-        _restartButton.gameObject.SetActive(false);
+        _winView.OnRestartButtonClicked -= OnRestartButtonClick;
+        _winView.Hide();
     }
 
     private void OnRestartButtonClick()

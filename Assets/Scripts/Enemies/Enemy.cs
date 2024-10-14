@@ -12,7 +12,7 @@ public class Enemy : GameBehaviorStateSwitcher
 
     [SerializeField] private EnemyMover _enemyMovement;
     [SerializeField] private EnemyView _enemyView;
-    [SerializeField] private EnemyHud _enemyHud;
+    [SerializeField] private HealthBar _enemyHud;
 
     private EnemyContext _context;
 
@@ -26,6 +26,7 @@ public class Enemy : GameBehaviorStateSwitcher
 
         _enemyMovement.SetSpeed(context.Speed, context.RotationSpeed);
         _enemyHud.Initialize(Health);
+        _enemyHud.Hide();
         _context = context;
     }
 
@@ -37,6 +38,7 @@ public class Enemy : GameBehaviorStateSwitcher
             Recycle();
             return;
         }
+        _enemyHud.Show();
         _enemyHud.ChangeHealth(Health);
         _enemyView.TakeDamageAnimation();
     }

@@ -13,20 +13,20 @@ public class GameLoseState : State
     [SerializeField] private Car _car;
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private CameraStateSwitcher _cameraSwitcher;
-    [SerializeField] private Button _restartButton;
+    [SerializeField] private LoseView _loseView;
 
     private void OnEnable()
     {
         _car.SwitchState<CarDestroyedState>();
         _cameraSwitcher.SwitchState<CameraOrbitViewState>();
-        _restartButton.gameObject.SetActive(true);
-        _restartButton.onClick.AddListener(OnRestartButtonClick);
+        _loseView.Show();
+        _loseView.OnRestartButtonClicked += OnRestartButtonClick;
     }
 
     private void OnDisable()
     {
-        _restartButton.onClick.RemoveListener(OnRestartButtonClick);
-        if(_restartButton != null) _restartButton.gameObject.SetActive(false);
+        _loseView.OnRestartButtonClicked -= OnRestartButtonClick;
+        _loseView.Hide();
     }
 
     private void OnRestartButtonClick()

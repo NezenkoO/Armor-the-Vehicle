@@ -8,14 +8,12 @@ using UnityEngine;
 public class CarDestroyedState : State
 {
     [SerializeField] private CarMovement _carMovement;
-    [SerializeField] private CarHud _hud;
     [SerializeField] private TurretBulletLauncher _turretBulletLauncher;
     [SerializeField] private TurretMovement _turretMovement;
     [SerializeField] private ParticleSystem _fireParticleSystem;
 
     private void OnEnable()
     {
-        _hud.Hide();
         _fireParticleSystem.Play();
         _turretBulletLauncher.Clear();
         _turretBulletLauncher.enabled = false;
