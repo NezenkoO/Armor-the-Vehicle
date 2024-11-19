@@ -3,36 +3,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utils.Extensions;
 
-public class LoseView : MonoBehaviour
+namespace GamePlay
 {
-    public event Action OnRestartButtonClicked;
-
-    [SerializeField] private Button _button;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private CanvasGroup _canvasGroup;
-
-    private void OnEnable()
+    public class LoseView : MonoBehaviour
     {
-        _button.onClick.AddListener(OnButtonClick);
-    }
+        public event Action OnRestartButtonClicked;
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
-    private void OnButtonClick()
-    {
-        OnRestartButtonClicked?.Invoke();
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClick);
+        }
 
-    public void Show()
-    {
-        _canvasGroup.Show();
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
+        }
 
-    public void Hide()
-    {
-        _canvasGroup.Hide();
+        private void OnButtonClick()
+        {
+            OnRestartButtonClicked?.Invoke();
+        }
+
+        public void Show()
+        {
+            _canvasGroup.Show();
+        }
+
+        public void Hide()
+        {
+            _canvasGroup.Hide();
+        }
     }
 }

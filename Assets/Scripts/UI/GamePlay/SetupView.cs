@@ -3,36 +3,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utils.Extensions;
 
-public class SetupView : MonoBehaviour
+namespace GamePlay
 {
-    public event Action GoButtonClicked;
-
-    [SerializeField] private Button _button;
-    [SerializeField] private CanvasGroup _canvasGroup;
-
-    private void OnEnable()
+    public class SetupView : MonoBehaviour
     {
-        _button.onClick.AddListener(OnButtonClick);
-    }
+        public event Action GoButtonClicked;
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
-    private void OnButtonClick()
-    {
-        GoButtonClicked?.Invoke();
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClick);
+        }
 
-    public void Show()
-    {
-        _canvasGroup.Show();
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
+        }
 
-    public void Hide()
-    {
-        if (_canvasGroup == null) return;
-        _canvasGroup.Hide();
+        private void OnButtonClick()
+        {
+            GoButtonClicked?.Invoke();
+        }
+
+        public void Show()
+        {
+            _canvasGroup.Show();
+        }
+
+        public void Hide()
+        {
+            if (_canvasGroup == null) return;
+            _canvasGroup.Hide();
+        }
     }
 }

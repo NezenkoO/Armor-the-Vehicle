@@ -1059,8 +1059,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 864515989}
-  - component: {fileID: 864515991}
   - component: {fileID: 864515990}
+  - component: {fileID: 864515991}
   m_Layer: 5
   m_Name: WinView
   m_TagString: Untagged
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 864515988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f12d4b3e8b5ce3b439dab33e93da9bf7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7208abb6402e26045bc8f0e36514ae82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 398832800}
@@ -1124,8 +1124,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877089610}
-  - component: {fileID: 877089608}
   - component: {fileID: 877089609}
+  - component: {fileID: 877089611}
   m_Layer: 5
   m_Name: LoseView
   m_TagString: Untagged
@@ -1133,21 +1133,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &877089608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877089607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3349485cc05a4d340a5324c204b6be49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 1744997629}
-  _animator: {fileID: 0}
-  _canvasGroup: {fileID: 877089609}
 --- !u!225 &877089609
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1181,6 +1166,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1820, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &877089611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877089607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2007ca62178d2a3468858907bb9ec769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1744997629}
+  _animator: {fileID: 0}
+  _canvasGroup: {fileID: 877089609}
 --- !u!1 &887788998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,8 +1190,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887788999}
-  - component: {fileID: 887789001}
   - component: {fileID: 887789000}
+  - component: {fileID: 887789001}
   m_Layer: 5
   m_Name: SetupView
   m_TagString: Untagged
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 887788998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df506cd419c974f4ca678d4cdaa9f514, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f329c7e39ee5a54fb0d845063bd292b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1120325161}
@@ -1788,7 +1788,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _projectilesFactory: {fileID: 0}
+  _projectilesFactory: {fileID: 11400000, guid: c621b61cf4b5a27409c22503baa083e7,
+    type: 2}
 --- !u!1 &1768805702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2045,7 @@ MonoBehaviour:
   _car: {fileID: 1000831674}
   _enemySpawner: {fileID: 2126728243}
   _cameraSwitcher: {fileID: 330585548}
-  _loseView: {fileID: 877089608}
+  _loseView: {fileID: 877089611}
 --- !u!1 &1891933845
 GameObject:
   m_ObjectHideFlags: 0

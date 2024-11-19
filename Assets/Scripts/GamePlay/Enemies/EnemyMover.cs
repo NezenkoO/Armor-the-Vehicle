@@ -1,42 +1,45 @@
 ﻿using UnityEngine;
 
-public class EnemyMover : MonoBehaviour
+namespace GamePlay
 {
-    [SerializeField] private Rigidbody _rigidbody;
-
-    private float _rotationSpeed;
-    private float _speed;
-    private Transform _target;
-
-    public void SetSpeed(float speed, float rotationSpeed)
+    public class EnemyMover : MonoBehaviour
     {
-        if (speed < 0 || rotationSpeed < 0)
-            Debug.LogError("Speed cant be less than zero");
+        [SerializeField] private Rigidbody _rigidbody;
 
-        _speed = speed;
-        _rotationSpeed = rotationSpeed;
-    }
+        private float _rotationSpeed;
+        private float _speed;
+        private Transform _target;
 
-    private void Update()
-    {
-        if (_target == null) return;
+        public void SetSpeed(float speed, float rotationSpeed)
+        {
+            if (speed < 0 || rotationSpeed < 0)
+                Debug.LogError("Speed cant be less than zero");
 
-        Vector3 direction = (_target.position - transform.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
+            _speed = speed;
+            _rotationSpeed = rotationSpeed;
+        }
 
-        _rigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime));
+        private void Update()
+        {
+            if (_target == null) return;
 
-        Vector3 forwardMovement = transform.forward * _speed * Time.deltaTime;
-        _rigidbody.MovePosition(_rigidbody.position + forwardMovement);
-    }
+            Vector3 direction = (_target.position - transform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-    public void MoveTowards(Transform target)
-    {
-        _target = target;
-    }
+            _rigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime));
 
-    public void Stop()
-    {
-        _target = null;
+            Vector3 forwardMovement = transform.forward * _speed * Time.deltaTime;
+            _rigidbody.MovePosition(_rigidbody.position + forwardMovement);
+        }
+
+        public void MoveTowards(Transform target)
+        {
+            _target = target;
+        }
+
+        public void Stop()
+        {
+            _target = null;
+        }
     }
 }
