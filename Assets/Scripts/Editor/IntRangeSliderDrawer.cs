@@ -1,11 +1,18 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Utils;
 
 [CustomPropertyDrawer(typeof(IntRangeSliderAttribute))]
 public class IntRangeSliderDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        if (property.propertyType != SerializedPropertyType.Generic || property.type != nameof(IntRange))
+        {
+            EditorGUI.LabelField(position, "Exception: Use IntRangeSliderAttribute with IntRange");
+            return;
+        }
+
         int originalIndentLevel = EditorGUI.indentLevel;
         EditorGUI.BeginProperty(position, label, property);
 

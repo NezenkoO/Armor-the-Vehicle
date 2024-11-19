@@ -181,11 +181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 38903080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4200d1278a9104746a20d56da08c6213, type: 3}
+  m_Script: {fileID: 11500000, guid: df591ef29eb0a46459f8862dfa417b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _chunkFactory: {fileID: 11400000, guid: c5984647b7bd1a342a50c1c55292ab24, type: 2}
-  _initialSize: 5
 --- !u!1 &62145618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,12 +1784,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1749968992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f268fa11ccc13724684be5552d34138a, type: 3}
+  m_Script: {fileID: 11500000, guid: 036653c59534ce9469591d143ada4325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _factory: {fileID: 11400000, guid: c621b61cf4b5a27409c22503baa083e7, type: 2}
   _type: 0
-  _initialSize: 10
+  _projectilesFactory: {fileID: 0}
 --- !u!1 &1768805702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,12 +2401,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2126728240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 114716e54aea9924d95fc589d18e6503, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ccf4e8b1ba3c5647bb95e22fb9d4e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _enemyFactory: {fileID: 11400000, guid: 2d5696191cf75be4d90ddd51d25d6cd8, type: 2}
-  _enemyType: 0
-  _initialSize: 20
 --- !u!1001 &8179772376714674747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2485,6 +2482,11 @@ PrefabInstance:
     - target: {fileID: 3933443969225195464, guid: 1ea9ce7e3d7d803499635d1e1f11eda3,
         type: 3}
       propertyPath: _projectileFactory
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933443969225195464, guid: 1ea9ce7e3d7d803499635d1e1f11eda3,
+        type: 3}
+      propertyPath: _bulletProjectileObjectPool
       value: 
       objectReference: {fileID: 1749968994}
     - target: {fileID: 4691311559374239929, guid: 1ea9ce7e3d7d803499635d1e1f11eda3,

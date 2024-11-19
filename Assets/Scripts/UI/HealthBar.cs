@@ -1,34 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Utils.Extensions;
 
-public class HealthBar : MonoBehaviour
+namespace Core.UI
 {
-    [SerializeField] private CanvasGroup _canvasGroup;
-    [SerializeField] private Slider _slider;
-
-    public void Initialize(float health)
+    public class HealthBar : MonoBehaviour
     {
-        _slider.maxValue = health;
-        _slider.value = health;
-    }
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Slider _slider;
 
-    public void ChangeHealth(float health)
-    {
-        _slider.value = health;
-    }
+        public void Initialize(float health)
+        {
+            _slider.maxValue = health;
+            _slider.value = health;
+        }
 
-    public void Hide()
-    {
-        _canvasGroup.Hide();
-    }
+        public void ChangeHealth(float health)
+        {
+            _slider.value = health;
+        }
 
-    public void Show()
-    {
-        _canvasGroup.Show();
+        public void Hide()
+        {
+            _canvasGroup.Hide();
+        }
+
+        public void Show()
+        {
+            _canvasGroup.Show();
+        }
     }
 }

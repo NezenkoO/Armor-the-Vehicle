@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-public static class CanvasGroupExtension
+namespace Utils.Extensions
 {
-    public static void Show(this CanvasGroup canvasGroup)
+    public static class CanvasGroupExtension
     {
-        canvasGroup.alpha = 1;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-    }
+        public static void Show(this CanvasGroup canvasGroup)
+        {
+            SetCanvasGroupState(canvasGroup, 1, true, true);
+        }
 
-    public static void Hide(this CanvasGroup canvasGroup)
-    {
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        public static void Hide(this CanvasGroup canvasGroup)
+        {
+            SetCanvasGroupState(canvasGroup, 0, false, false);
+        }
+
+        public static void SetCanvasGroupState(this CanvasGroup canvasGroup, float alpha, bool interactable, bool blocksRaycasts)
+        {
+            canvasGroup.alpha = alpha;
+            canvasGroup.interactable = interactable;
+            canvasGroup.blocksRaycasts = blocksRaycasts;
+        }
     }
 }

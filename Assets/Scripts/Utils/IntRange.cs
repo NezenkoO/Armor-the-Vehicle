@@ -2,36 +2,40 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public struct IntRange
+namespace Utils
 {
-    [SerializeField] private int _min, _max;
-
-    public int Min => _min;
-    public int Max => _max;
-
-    public int RandomValueInRange => Random.Range(_min, _max);
-
-    public IntRange(int value)
+    [Serializable]
+    public struct IntRange
     {
-        _min = _max = value;
+        [SerializeField] private int _min, _max;
+
+        public int Min => _min;
+        public int Max => _max;
+
+        public int RandomValueInRange => Random.Range(_min, _max);
+
+        public IntRange(int value)
+        {
+            _min = _max = value;
+        }
+
+        public IntRange(int min, int max)
+        {
+            _min = min;
+            _max = max;
+        }
     }
 
-    public IntRange(int min, int max)
+    [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+    public class IntRangeSliderAttribute : PropertyAttribute
     {
-        _min = min;
-        _max = max;
-    }
-}
+        public int Min { get; private set; }
+        public int Max { get; private set; }
 
-public class IntRangeSliderAttribute : PropertyAttribute
-{
-    public int Min { get; private set; }
-    public int Max { get; private set; }
-
-    public IntRangeSliderAttribute(int min, int max)
-    {
-        Min = min;
-        Max = max < min ? min : max;
+        public IntRangeSliderAttribute(int min, int max)
+        {
+            Min = min;
+            Max = max < min ? min : max;
+        }
     }
 }

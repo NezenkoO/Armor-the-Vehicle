@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ba8ea870fe82c4d869ad6104b44ca9, type: 3}
   m_Name: ChunkFactory
   m_EditorClassIdentifier: 
-  _initialChunk: {fileID: 7244308962553876721, guid: 8ae38c07a33030540b928893c512e636,
+  _setupChunk: {fileID: 1600418782438174719, guid: 8ae38c07a33030540b928893c512e636,
     type: 3}
-  _endChunk: {fileID: 3583219036298848182, guid: 7396c466a188e61408582db672d9d191,
+  _finishChunk: {fileID: 8565122379709367334, guid: 7396c466a188e61408582db672d9d191,
     type: 3}
-  _chunks:
-  - {fileID: 608209401145847925, guid: cc29e69f43df00b49885a417ee0b29d9, type: 3}
-  - {fileID: 1106128355519315948, guid: 4f8e8b572d99e6a41a82c9dd6dcbce93, type: 3}
+  _straightChunks:
+  - {fileID: 7273130844632627500, guid: cc29e69f43df00b49885a417ee0b29d9, type: 3}
+  - {fileID: 4741171793164684063, guid: 4f8e8b572d99e6a41a82c9dd6dcbce93, type: 3}

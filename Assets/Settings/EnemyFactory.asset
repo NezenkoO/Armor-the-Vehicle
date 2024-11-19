@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9054157d72920cb4fa33ab0033ef6143, type: 3}
+  m_Name: EnemyFactory
+  m_EditorClassIdentifier: 
+  _zombie:
+    Prefab: {fileID: 5471895939846950823, guid: 83e7f45ebe93dc94abcdc8fc798b3ecc,
+      type: 3}
+    Scale:
+      _min: 0.4405628
+      _max: 0.48790082
+    Speed:
+      _min: 5.388156
+      _max: 8.385111
+    RotationSpeed:
+      _min: 8.385105
+      _max: 14.379015
+    Health:
+      _min: 114.19616
+      _max: 327.1373
+    Damage:
+      _min: 45.345013
+      _max: 70.18819

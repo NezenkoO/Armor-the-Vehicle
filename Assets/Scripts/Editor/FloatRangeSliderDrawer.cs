@@ -1,11 +1,18 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Utils;
 
 [CustomPropertyDrawer(typeof(FloatRangeSliderAttribute))]
 public class FloatRangeSliderDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        if (property.propertyType != SerializedPropertyType.Generic || property.type != nameof(FloatRange))
+        {
+            EditorGUI.LabelField(position, "Exception: Use FloatRangeSliderAttribute with FloatRange");
+            return;
+        }
+
         int originalIndentLevel = EditorGUI.indentLevel;
         EditorGUI.BeginProperty(position, label, property);
 

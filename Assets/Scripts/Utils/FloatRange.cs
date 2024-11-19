@@ -1,41 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public struct FloatRange
+namespace Utils
 {
-    [SerializeField] private float _min, _max;
-
-    public float Min => _min;
-    public float Max => _max;
-
-    public float RandomValueInRange => Random.Range(_min, _max);
-
-    public FloatRange(float value)
+    [Serializable]
+    public struct FloatRange
     {
-        _min = _max = value;
+        [SerializeField] private float _min, _max;
+
+        public float Min => _min;
+        public float Max => _max;
+
+        public float RandomValueInRange => Random.Range(_min, _max);
+
+        public FloatRange(float value)
+        {
+            _min = _max = value;
+        }
+
+        public FloatRange(float min, float max)
+        {
+            _min = min;
+            _max = max;
+        }
     }
 
-    public FloatRange(float min, float max)
+    [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+    public class FloatRangeSliderAttribute : PropertyAttribute
     {
-        _min = min;
-        _max = max;
-    }
-}
+        public float Min { get; private set; }
+        public float Max { get; private set; }
 
-public class FloatRangeSliderAttribute : PropertyAttribute
-{
-    public float Min { get; private set; }
-    public float Max { get; private set; }
-
-    public FloatRangeSliderAttribute(float min, float max)
-    {
-        Min = min;
-        Max = max < min ? min : max;
+        public FloatRangeSliderAttribute(float min, float max)
+        {
+            Min = min;
+            Max = max < min ? min : max;
+        }
     }
 }
