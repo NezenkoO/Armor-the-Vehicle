@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using GamePlay.Enemy;
 
 namespace GamePlay
 {
@@ -15,20 +16,20 @@ namespace GamePlay
             transform.position = previousChunk.Begin.position - End.localPosition;
         }
 
-        public virtual void SpawnEnemiesOnChunk(EnemySpawner enemiesSpawner, int count)
+        public virtual void SpawnEnemiesOnChunk(EnemiesSpawner enemiesSpawner, int count)
         {
             Vector3 roadDirection = (end.position - begin.position).normalized;
             float roadLength = Vector3.Distance(begin.position, end.position);
 
             for (int i = 0; i < count; i++)
             {
-                float randomDistance = UnityEngine.Random.Range(0f, roadLength);
+                float randomDistance = Random.Range(0f, roadLength);
                 Vector3 enemyPosition = begin.position + roadDirection * randomDistance;
 
-                Vector3 roadWidthOffset = Vector3.right * UnityEngine.Random.Range(-5f, 5f);
+                Vector3 roadWidthOffset = Vector3.right * Random.Range(-5f, 5f);
                 enemyPosition += roadWidthOffset;
 
-                var enemy = enemiesSpawner.SpawnEnemy();
+                var enemy = enemiesSpawner.SpawnZombie(new EnemyContext(0.4f, 1, 1, 100, 1));
                 enemy.transform.position = enemyPosition;
             }
         }

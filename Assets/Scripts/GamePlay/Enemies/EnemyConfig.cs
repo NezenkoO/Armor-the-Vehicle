@@ -1,28 +1,27 @@
 ﻿using System;
+using UnityEngine;
 using Utils;
 
-namespace GamePlay
+namespace GamePlay.Enemy
 {
     [Serializable]
     public class EnemyConfig
     {
-        public Enemy Prefab;
-        [FloatRangeSlider(0.1f, 2f)]
-        public FloatRange Scale = new FloatRange(1f);
-        [FloatRangeSlider(1f, 20f)]
-        public FloatRange Speed = new FloatRange(1f);
-        [FloatRangeSlider(1f, 20f)]
-        public FloatRange RotationSpeed = new FloatRange(1f);
-        [FloatRangeSlider(10f, 1000f)]
-        public FloatRange Health = new FloatRange(100f);
-        [FloatRangeSlider(1f, 100f)]
-        public FloatRange Damage = new FloatRange(5f);
+        [field: SerializeField, FloatRangeSlider(0.1f, 2f)] public FloatRange Scale { get; private set; }
+        [field: SerializeField, FloatRangeSlider(1f, 20f)] public FloatRange Speed { get; private set; }
+        [field: SerializeField, FloatRangeSlider(1f, 20f)] public FloatRange RotationSpeed { get; private set; }
+        [field: SerializeField, FloatRangeSlider(10f, 1000f)] public FloatRange Health { get; private set; }
+        [field: SerializeField, IntRangeSlider(1, 100)] public IntRange Damage { get; private set; }
 
         public EnemyContext ToContext()
         {
-            var damage = Damage.RandomValueInRange;
-            return new EnemyContext(Scale.RandomValueInRange,
-                Speed.RandomValueInRange, RotationSpeed.RandomValueInRange, Health.RandomValueInRange, (int)damage);
+            return new EnemyContext(
+                Scale.RandomValueInRange,
+                Speed.RandomValueInRange,
+                RotationSpeed.RandomValueInRange,
+                Health.RandomValueInRange,
+                Damage.RandomValueInRange
+            );
         }
     }
 }

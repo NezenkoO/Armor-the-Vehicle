@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9054157d72920cb4fa33ab0033ef6143, type: 3}
-  m_Name: EnemyFactory
+  m_Script: {fileID: 11500000, guid: 504bdeecabcf70c4c9b15684a1388606, type: 3}
+  m_Name: ParticleSystemObjectPool
   m_EditorClassIdentifier: 
-  _zombie: {fileID: 5471895939846950823, guid: 83e7f45ebe93dc94abcdc8fc798b3ecc, type: 3}
+  _damageEffectParticleSystem: {fileID: 0}
+  _dieEffectParticleSystem: {fileID: 1941385079773603733, guid: 0d5c04ad139714049ba1f0417e8af608,
+    type: 3}

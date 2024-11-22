@@ -1,63 +1,42 @@
-using UnityEngine;
 using Core.State;
-using Core.UI;
+using UnityEngine;
+using Zenject;
 
-namespace GamePlay
+namespace GamePlay.Enemy
 {
     [SelectionBase]
     public class Enemy : StateSwitcher
     {
-        public float Health { get; private set; }
-        public float Damage { get; private set; }
-        public IEnemyReclaimer EnemyReclaimer { get; set; }
-
-        [SerializeField] private EnemyMover _enemyMovement;
+        [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyView _enemyView;
-        [SerializeField] private HealthBar _enemyHud;
 
-        private EnemyContext _context;
+        public float CurrentHealth { get; private set; }
+        public EnemyContext Context { get; private set; }
 
         public void Initialize(EnemyContext context)
         {
-            Health = context.Health;
-            Damage = context.Damage;
+            CurrentHealth = context.Health;
+            Context = context;
 
             transform.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
-            transform.localScale = new Vector3(context.Scale, context.Scale, context.Scale);
+            transform.localScale = Vector3.one * context.Scale;
 
-            _enemyMovement.SetSpeed(context.Speed, context.RotationSpeed);
-            _enemyHud.Initialize(Health);
-            _enemyHud.Hide();
-            _context = context;
+            _enemyView.Init(this);
+            _enemyMovement.Initialize(context.Speed, context.RotationSpeed);
         }
 
-        public void DealDamage(float value)
+        public void TakeDamage(float value)
         {
-            Health -= value;
-            if (Health <= 0)
-            {
-                Recycle();
-                return;
-            }
-            _enemyHud.Show();
-            _enemyHud.ChangeHealth(Health);
-            _enemyView.TakeDamageAnimation();
+            if ((CurrentHealth -= value) <= 0) Die();
+            else _enemyView.ApplyDamage(value);
         }
 
-        public void Recycle()
+        public void Die()
         {
-            if (EnemyReclaimer == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            EnemyReclaimer.Reclaim(this);
+            _enemyView.Die();
+            Destroy(gameObject);
         }
 
-        public void ResetEnemy()
-        {
-            Initialize(_context);
-            SwitchState<IdleState>();
-        }
+        public class Factory : PlaceholderFactory<Enemy> { }
     }
 }

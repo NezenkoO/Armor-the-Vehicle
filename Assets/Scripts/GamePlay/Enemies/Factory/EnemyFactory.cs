@@ -1,29 +1,24 @@
-﻿using UnityEngine;
-using Core;
+﻿using System;
+using UnityEngine;
+using Zenject;
 
-namespace GamePlay
+namespace GamePlay.Enemy
 {
-    public class EnemyFactory : GameObjectFactory
+    [CreateAssetMenu(fileName = "EnemyFactory", menuName = "Factories/EnemyFactory")]
+    public class EnemyFactory : ScriptableObject
     {
-        [SerializeField] private EnemyConfig _zombie;
+        [SerializeField] private Enemy _zombie;
 
-        public Enemy Get(EnemyType type)
-        {
-            var config = GetConfig(type);
-            Enemy instance = CreateGameObjectInstance(config.Prefab);
-            instance.Initialize(config.ToContext());
-            return instance;
-        }
+        [Inject]
+        private readonly DiContainer _diContainer;
 
-        private EnemyConfig GetConfig(EnemyType type)
+        public Enemy Create(EnemyType type)
         {
-            switch (type)
+            return type switch
             {
-                case EnemyType.Zombie:
-                    return _zombie;
-            }
-            Debug.LogError($"No config for: {type}");
-            return _zombie;
+                EnemyType.Zombie => _diContainer.InstantiatePrefabForComponent<Enemy>(_zombie),
+                _ => throw new NotImplementedException($"EnemyType {type} is not implemented."),
+            };
         }
     }
 

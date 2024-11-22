@@ -1,39 +1,22 @@
 ﻿using UnityEngine;
 using Core.State;
 
-namespace GamePlay
+namespace GamePlay.Enemy
 {
     public class AttackState : State
     {
-        [SerializeField] private Enemy _enemy;
-        [SerializeField] private EnemyMover _mover;
-        [SerializeField] private EnemyView _enemyAnimations;
+        [SerializeField] private EnemyMovement _mover;
 
         private Transform _target;
 
-        private void OnEnable()
+        private void Update()
         {
-            _enemyAnimations.StartRunAnimation();
-            _mover.MoveTowards(_target);
-        }
-
-        private void OnDisable()
-        {
-            _enemyAnimations.StopRunAnimation();
-            _mover.Stop();
+            _mover.Run(_target.position);
         }
 
         public void SetTarget(Transform target)
         {
             _target = target;
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.TryGetComponent(out Car car))
-            {
-                _enemy.Recycle();
-            }
         }
     }
 }

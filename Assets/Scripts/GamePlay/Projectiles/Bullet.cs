@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using GamePlay.Enemy;
 
 namespace GamePlay
 {
@@ -46,11 +47,11 @@ namespace GamePlay
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out Enemy enemy))
-            {
-                enemy.DealDamage(Damage);
-                Recycle();
-            }
+            //if (other.gameObject.TryGetComponent(out Enemy enemy))
+            //{
+            //    enemy.ApplyDamage(Damage);
+            //    Recycle();
+            //}
         }
     }
 }

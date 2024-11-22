@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using GamePlay.Enemy;
 
 namespace GamePlay
 {
     public class ChunkSpawner : MonoBehaviour
     {
         [SerializeField] private LevelConfig _levelConfig;
-        [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private EnemiesSpawner _enemySpawner;
         [SerializeField] private ChunkObjectPool _chunkObjectPool;
         [SerializeField] private Car _car;
 

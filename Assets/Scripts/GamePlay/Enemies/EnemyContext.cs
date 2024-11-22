@@ -1,12 +1,12 @@
-﻿namespace GamePlay
+﻿namespace GamePlay.Enemy
 {
-    public sealed class EnemyContext
+    public readonly struct EnemyContext
     {
-        public float Scale { get; private set; }
-        public float Speed { get; private set; }
-        public float RotationSpeed { get; private set; }
-        public float Health { get; private set; }
-        public int Damage { get; private set; }
+        public float Scale { get; }
+        public float Speed { get; }
+        public float RotationSpeed { get; }
+        public float Health { get; }
+        public int Damage { get; }
 
         public EnemyContext(float scale, float speed, float rotationSpeed, float health, int damage)
         {
@@ -17,5 +17,4 @@
             Damage = damage;
         }
     }
-
 }

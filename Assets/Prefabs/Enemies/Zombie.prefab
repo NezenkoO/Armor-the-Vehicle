@@ -89,7 +89,8 @@ GameObject:
   - component: {fileID: 3411577619643132586}
   - component: {fileID: 3368602307141939830}
   - component: {fileID: 5665604171535130286}
-  - component: {fileID: 7369734222442725728}
+  - component: {fileID: 6824176846013309696}
+  - component: {fileID: 2959941159975393393}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -125,15 +126,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727766865868121513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be68e2e205ad3b142abe83ffed89d54d, type: 3}
+  m_Script: {fileID: 11500000, guid: f5cf8fd106486324591d64d3ce3840f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _allStates:
   - {fileID: 8994614908827788523}
-  - {fileID: 4076923475643138132}
-  _enemyMovement: {fileID: 7369734222442725728}
+  _enemyMovement: {fileID: 2959941159975393393}
   _enemyView: {fileID: 5665604171535130286}
-  _enemyHud: {fileID: 2703301709058969480}
 --- !u!114 &8994614908827788523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,9 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateSwitcherGameObject: {fileID: 1727766865868121513}
-  _enemy: {fileID: 5471895939846950823}
-  _mover: {fileID: 7369734222442725728}
-  _enemyAnimations: {fileID: 5665604171535130286}
+  _mover: {fileID: 2959941159975393393}
 --- !u!54 &3411577619643132586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,7 +210,7 @@ MonoBehaviour:
   _renderer: {fileID: 41228185584963834}
   _animator: {fileID: 3787941805894060505}
   _flashDuration: 0.1
---- !u!114 &7369734222442725728
+--- !u!114 &6824176846013309696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,10 +219,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727766865868121513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f4aefc041907249a616f035a82c0e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e39fb90de59f6f46a7991c064435572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateSwitcherGameObject: {fileID: 1727766865868121513}
+  _attackState: {fileID: 8994614908827788523}
+--- !u!114 &2959941159975393393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727766865868121513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a0a330813e7214bb12c96b6e08bc79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 3411577619643132586}
+  _enemyView: {fileID: 5665604171535130286}
 --- !u!1 &3857978366879637497
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,8 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e39fb90de59f6f46a7991c064435572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateSwitcherGameObject: {fileID: 1727766865868121513}
-  _enemyAnimations: {fileID: 5665604171535130286}
+  _stateSwitcherGameObject: {fileID: 0}
   _attackState: {fileID: 8994614908827788523}
 --- !u!1001 &7348727428416173128
 PrefabInstance:

@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
 using Core.State;
 
-namespace GamePlay
+namespace GamePlay.Enemy
 {
     public class IdleState : State
     {
-        [SerializeField] private EnemyView _enemyAnimations;
         [SerializeField] private AttackState _attackState;
-
-        public void OnEnable()
-        {
-            _enemyAnimations.StartIdleAnimation();
-        }
 
         private void OnTriggerEnter(Collider other)
         {

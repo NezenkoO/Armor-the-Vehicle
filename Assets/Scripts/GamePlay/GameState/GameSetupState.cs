@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using Core.State;
+﻿using Core.State;
+using GamePlay.Enemy;
+using UnityEngine;
 
 namespace GamePlay.GameStates
 {
@@ -7,7 +8,7 @@ namespace GamePlay.GameStates
     {
         [SerializeField] private CameraStateSwitcher _cameraStateSwitcher;
         [SerializeField] private ChunkSpawner _chunkSpawner;
-        [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private EnemiesSpawner _enemySpawner;
         [SerializeField] private Car _car;
         [SerializeField] private Turret _turret;
         [SerializeField] private SetupView _setupView;

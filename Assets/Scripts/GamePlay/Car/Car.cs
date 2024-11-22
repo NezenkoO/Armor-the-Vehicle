@@ -45,19 +45,19 @@ namespace GamePlay
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Enemy enemy))
-            {
-                DealDamage(enemy.Damage);
-                enemy.Recycle();
-            }
-            else if (other.TryGetComponent(out FinishChunk endChunk))
-            {
-                CarReachedEndChunk?.Invoke(endChunk);
-            }
-            else if (other.TryGetComponent(out Chunk chunk))
-            {
-                CarReachedChunk?.Invoke();
-            }
+            //if (other.TryGetComponent(out Enemy enemy))
+            //{
+            //    DealDamage(enemy.Context.Damage);
+            //    enemy.Recycle();
+            //}
+            //else if (other.TryGetComponent(out FinishChunk endChunk))
+            //{
+            //    CarReachedEndChunk?.Invoke(endChunk);
+            //}
+            //else if (other.TryGetComponent(out Chunk chunk))
+            //{
+            //    CarReachedChunk?.Invoke();
+            //}
         }
     }
 }

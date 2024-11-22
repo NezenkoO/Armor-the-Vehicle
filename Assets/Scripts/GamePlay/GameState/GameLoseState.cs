@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-using Core.State;
+﻿using Core.State;
+using GamePlay.Enemy;
+using UnityEngine;
 
 namespace GamePlay.GameStates
 {
     public class GameLoseState : State
     {
         [SerializeField] private Car _car;
-        [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private EnemiesSpawner _enemySpawner;
         [SerializeField] private CameraStateSwitcher _cameraSwitcher;
         [SerializeField] private LoseView _loseView;
 
