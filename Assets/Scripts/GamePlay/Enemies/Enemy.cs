@@ -1,42 +1,60 @@
+using Core.Health;
 using Core.State;
+using Core.UI;
 using UnityEngine;
-using Zenject;
+using Utils;
 
-namespace GamePlay.Enemy
+namespace GamePlay.Enemies
 {
     [SelectionBase]
     public class Enemy : StateSwitcher
     {
+        public EnemyContext Context { get; private set; }
+        public IHealth Health => _healthLinkedInterface.Value;
+
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyView _enemyView;
-
-        public float CurrentHealth { get; private set; }
-        public EnemyContext Context { get; private set; }
+        [SerializeField] private HealthView _healthView;
+        [SerializeField] private LinkedInterface<IHealth> _healthLinkedInterface;
 
         public void Initialize(EnemyContext context)
         {
-            CurrentHealth = context.Health;
             Context = context;
 
-            transform.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
             transform.localScale = Vector3.one * context.Scale;
 
-            _enemyView.Init(this);
+            Health.Initialize(context.Health);
+            _healthView.Initialize(Health);
+            _enemyView.Initialize(this);
             _enemyMovement.Initialize(context.Speed, context.RotationSpeed);
+            OnInitialize();
         }
 
-        public void TakeDamage(float value)
+        private void OnEnable()
         {
-            if ((CurrentHealth -= value) <= 0) Die();
-            else _enemyView.ApplyDamage(value);
+            Health.HealthChanged += OnHealthChanged;
+            Health.Died += Die;
+        }
+
+        private void OnDisable()
+        {
+            Health.HealthChanged -= OnHealthChanged;
+            Health.Died -= Die;
+        }
+
+        private void OnHealthChanged(int currentHealth)
+        {
+            _enemyView.PlayTakeDamageAnimation(currentHealth);
         }
 
         public void Die()
         {
-            _enemyView.Die();
+            OnDie();
+            _enemyView.PlayDieAnimation();
             Destroy(gameObject);
         }
 
-        public class Factory : PlaceholderFactory<Enemy> { }
+        public virtual void OnDie() { }
+        public virtual void OnInitialize() { }
     }
 }

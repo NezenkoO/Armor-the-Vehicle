@@ -1,24 +1,33 @@
-﻿using System;
+﻿using Core;
+using System;
 using UnityEngine;
 using Zenject;
 
-namespace GamePlay.Enemy
+namespace GamePlay.Enemies
 {
     [CreateAssetMenu(fileName = "EnemyFactory", menuName = "Factories/EnemyFactory")]
     public class EnemyFactory : ScriptableObject
     {
         [SerializeField] private Enemy _zombie;
 
-        [Inject]
-        private readonly DiContainer _diContainer;
+        private DiContainer _diContainer;
 
-        public Enemy Create(EnemyType type)
+        [Inject]
+        public void Initialize(DiContainer diContainer)
         {
-            return type switch
+            _diContainer = diContainer;
+        }
+
+        public Enemy Create(EnemyType type, EnemyContext context)
+        {
+            var enemy = type switch
             {
                 EnemyType.Zombie => _diContainer.InstantiatePrefabForComponent<Enemy>(_zombie),
                 _ => throw new NotImplementedException($"EnemyType {type} is not implemented."),
             };
+
+            enemy.Initialize(context);
+            return enemy;
         }
     }
 

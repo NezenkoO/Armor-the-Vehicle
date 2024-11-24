@@ -1,57 +1,46 @@
 ﻿using UnityEngine;
-using GamePlay.Enemy;
+using GamePlay.Enemies;
+using Core.Health;
 
-namespace GamePlay
+namespace GamePlay.Projectiles
 {
     public class Bullet : Projectile
     {
         [SerializeField] private Rigidbody rb;
         [SerializeField] private TrailRenderer _trailRenderer;
 
-        private Vector3 _direction;
         private float _age;
 
-        public override void Launch(Vector3 direction)
+        public override void OnInitialize()
         {
             _age = 0;
-            _direction = direction;
-            transform.rotation = Quaternion.LookRotation(_direction, Vector3.up);
+            transform.rotation = Quaternion.LookRotation(Context.LaunchDirection, Vector3.up);
             _trailRenderer.Clear();
         }
 
-        public void Update()
+        private void Update()
         {
-            if (_direction == Vector3.zero)
+            if (!IsInitialized)
                 return;
 
             _age += Time.deltaTime;
-            if (_age >= _maxAge)
-            {
-                Recycle();
-                return;
-            }
-
-            rb.MovePosition(rb.position + _direction.normalized * Speed);
-            return;
-        }
-
-        public void Recycle()
-        {
-            if (ProjectileReclaimer == null)
+            if (_age >= Context.MaxAge)
             {
                 Destroy(gameObject);
                 return;
             }
-            ProjectileReclaimer.Reclaim(this);
+
+            rb.MovePosition(rb.position + Context.LaunchDirection.normalized * Context.Speed);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            //if (other.gameObject.TryGetComponent(out Enemy enemy))
-            //{
-            //    enemy.ApplyDamage(Damage);
-            //    Recycle();
-            //}
+            if (collision.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(Context.Damage);
+            }
+
+            Destroy(gameObject);
         }
     }
 }

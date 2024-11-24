@@ -1,5 +1,5 @@
 ﻿using GamePlay;
-using GamePlay.Enemy;
+using GamePlay.Enemies;
 using UnityEngine;
 using Zenject;
 
@@ -13,7 +13,7 @@ namespace GamePlay
         public override void InstallBindings()
         {
             Container.Bind<ZombieViewContent>().FromScriptableObject(zombieViewContent).AsSingle();
-            Container.QueueForInject(_enemyFactory);
+            Container.Bind<EnemyFactory>().FromScriptableObject(_enemyFactory).AsSingle();
         }
     }
 }

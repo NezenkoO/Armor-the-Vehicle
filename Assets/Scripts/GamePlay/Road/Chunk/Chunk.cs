@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using GamePlay.Enemy;
+using GamePlay.Enemies;
 
-namespace GamePlay
+namespace GamePlay.Road
 {
     public abstract class Chunk : MonoBehaviour
     {
-        public IChunkReclaimer ChunkReclaimer { get; set; }
         public Transform Begin => begin;
         public Transform End => end;
 
@@ -16,7 +15,7 @@ namespace GamePlay
             transform.position = previousChunk.Begin.position - End.localPosition;
         }
 
-        public virtual void SpawnEnemiesOnChunk(EnemiesSpawner enemiesSpawner, int count)
+        public virtual void SpawnEnemiesOnChunk(EnemiesContainer enemiesSpawner, int count)
         {
             Vector3 roadDirection = (end.position - begin.position).normalized;
             float roadLength = Vector3.Distance(begin.position, end.position);
@@ -29,19 +28,9 @@ namespace GamePlay
                 Vector3 roadWidthOffset = Vector3.right * Random.Range(-5f, 5f);
                 enemyPosition += roadWidthOffset;
 
-                var enemy = enemiesSpawner.SpawnZombie(new EnemyContext(0.4f, 1, 1, 100, 1));
-                enemy.transform.position = enemyPosition;
+                //var enemy = enemiesSpawner.Spawn(new EnemyContext(0.4f, 1, 1, 100, 1));
+                //enemy.transform.position = enemyPosition;
             }
-        }
-
-        public void Recycle()
-        {
-            if (ChunkReclaimer == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            ChunkReclaimer.Reclaim(this);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Core.State;
-using GamePlay.Enemy;
+using GamePlay.Enemies;
 using UnityEngine;
 
 namespace GamePlay.GameStates
@@ -7,7 +7,7 @@ namespace GamePlay.GameStates
     public class GameLevelEndState : State
     {
         [SerializeField] private CameraStateSwitcher _cameraStateSwitcher;
-        [SerializeField] private EnemiesSpawner _enemySpawner;
+        [SerializeField] private EnemiesContainer _enemySpawner;
         [SerializeField] private Car _car;
         [SerializeField] private WinView _winView;
 

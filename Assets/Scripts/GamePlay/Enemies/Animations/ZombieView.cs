@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Core.UI;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace GamePlay.Enemy
+namespace GamePlay.Enemies
 {
     public class ZombieView : EnemyView
     {
@@ -14,13 +15,18 @@ namespace GamePlay.Enemy
         [SerializeField] private float _flashDuration;
         [Inject] private ZombieViewContent _zombieViewContent;
 
-        public override void ApplyDamage(float value)
+        protected override void OnInit()
+        {
+            transform.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+        }
+
+        public override void PlayTakeDamageAnimation(float damage)
         {
             _animator.SetTrigger(Damage);
             StartCoroutine(TriggerFlashEffect());
         }
 
-        public override void Die()
+        public override void PlayDieAnimation()
         {
             _zombieViewContent.PlayDieEffect(transform.position);
         }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Core.State;
 using Core.UI;
+using GamePlay.Road;
 
 namespace GamePlay
 {
@@ -15,27 +16,27 @@ namespace GamePlay
 
         [SerializeField] private float _startHealth;
         [SerializeField] private CarView _carAnimation;
-        [SerializeField] private HealthBar _hud;
+        [SerializeField] private HealthView _hud;
 
         public void Initialize()
         {
-            Health = _startHealth;
-            _hud.Initialize(_startHealth);
-            _hud.Hide();
+            //Health = _startHealth;
+            //_hud.Initialize(_startHealth);
+            //_hud.Hide();
         }
 
         public void DealDamage(float value)
         {
-            Health -= value;
-            if (Health <= 0)
-            {
-                _hud.Hide();
-                CarDestroyed?.Invoke();
-                return;
-            }
-            _hud.Show();
-            _hud.ChangeHealth(Health);
-            _carAnimation.PlayHitAnimation();
+            //Health -= value;
+            //if (Health <= 0)
+            //{
+            //    _hud.Hide();
+            //    CarDestroyed?.Invoke();
+            //    return;
+            //}
+            //_hud.Show();
+            //_hud.ChangeHealth(Health);
+            //_carAnimation.PlayHitAnimation();
         }
 
         public void Recycle()

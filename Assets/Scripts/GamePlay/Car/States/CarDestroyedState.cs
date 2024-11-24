@@ -13,7 +13,7 @@ namespace GamePlay
         private void OnEnable()
         {
             _fireParticleSystem.Play();
-            _turretBulletLauncher.Clear();
+            //_turretBulletLauncher.Clear();
             _turretBulletLauncher.enabled = false;
             _turretMovement.enabled = false;
             _carMovement.enabled = false;

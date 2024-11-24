@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GamePlay
+namespace GamePlay.Road
 {
     public class SetupChunk : Chunk
     {

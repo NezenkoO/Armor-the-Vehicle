@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Core.State;
 
-namespace GamePlay.Enemy
+namespace GamePlay.Enemies
 {
     public class IdleState : State
     {

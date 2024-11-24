@@ -2,10 +2,10 @@
 using UnityEngine;
 using Core;
 
-namespace GamePlay
+namespace GamePlay.Road
 {
     [CreateAssetMenu(fileName = "ChunkFactory", menuName = "Factories/ChunkFactory")]
-    public class ChunkFactory : GameObjectFactory
+    public class ChunkFactory : ScriptableObject
     {
         public IReadOnlyList<StraightChunk> StraightChunks => _straightChunks;
 
@@ -15,13 +15,13 @@ namespace GamePlay
 
         public SetupChunk GetSetupChunk()
         {
-            var chunk = CreateGameObjectInstance(_setupChunk);
+            var chunk = Instantiate(_setupChunk);
             return chunk;
         }
 
         public FinishChunk GetFinishChunk()
         {
-            var chunk = CreateGameObjectInstance(_finishChunk);
+            var chunk = Instantiate(_finishChunk);
             return chunk;
         }
 
@@ -34,7 +34,7 @@ namespace GamePlay
             }
 
             int randomIndex = Random.Range(0, _straightChunks.Count);
-            var chunk = CreateGameObjectInstance(_straightChunks[randomIndex]);
+            var chunk = Instantiate(_straightChunks[randomIndex]);
             return chunk;
         }
     }

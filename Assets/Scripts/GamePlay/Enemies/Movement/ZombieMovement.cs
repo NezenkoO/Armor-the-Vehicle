@@ -1,4 +1,4 @@
-﻿using GamePlay.Enemy;
+﻿using GamePlay.Enemies;
 using UnityEngine;
 
 public class ZombieMovement : EnemyMovement

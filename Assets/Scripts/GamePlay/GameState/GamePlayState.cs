@@ -1,4 +1,5 @@
 ﻿using Core.State;
+using GamePlay.Road;
 using UnityEngine;
 
 namespace GamePlay.GameStates
@@ -11,8 +12,8 @@ namespace GamePlay.GameStates
 
         private void OnEnable()
         {
-            _chunkSpawner.Enable();
-            _chunkSpawner.TrySpawnChunk();
+            //_chunkSpawner.Enable();
+            //_chunkSpawner.TrySpawnChunk();
             _car.SwitchState<CarDriveState>();
             _cameraStateSwitcher.SwitchState<BackCameraViewState>();
             _car.CarReachedEndChunk += CarReachedEndChunk;
@@ -21,7 +22,7 @@ namespace GamePlay.GameStates
 
         private void OnDisable()
         {
-            _chunkSpawner.Disable();
+            //_chunkSpawner.Disable();
             _car.CarReachedEndChunk -= CarReachedEndChunk;
             _car.CarDestroyed -= OnCarDestroyed;
         }

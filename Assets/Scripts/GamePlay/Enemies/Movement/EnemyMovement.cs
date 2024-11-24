@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GamePlay.Enemy
+namespace GamePlay.Enemies
 {
     public abstract class EnemyMovement : MonoBehaviour
     {
@@ -12,9 +12,6 @@ namespace GamePlay.Enemy
 
         public void Initialize(float speed, float rotationSpeed)
         {
-            if (speed < 0 || rotationSpeed < 0)
-                Debug.LogError("Speed cant be less than zero");
-
             Speed = speed;
             RotationSpeed = rotationSpeed;
         }
